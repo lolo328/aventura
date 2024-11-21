@@ -1,11 +1,13 @@
-const avanca = document.querySelectorAll('.btn-proximo');
-
-avanca.forEach(button => {
-    button.addEventListener('click', function(){
-        const atual = document.querySelector('.ativo');
-        const proximoPasso = 'passo-' + this.getAttribute('data-proximo');
-
-        atual.classList.remove('ativo');
-        document.getElementById(proximoPasso).classList.add('ativo');
-    })
-})
+// Função para controlar os passos da aventura
+const botoes = document.querySelectorAll('.btn-proximo');
+botoes.forEach((botao) => {
+    botao.addEventListener('click', function () {
+        // Esconde o passo atual
+        const passoAtual = document.querySelector('.passo.ativo');
+        passoAtual.classList.remove('ativo');
+        
+        // Exibe o próximo passo
+        const proximoPasso = document.getElementById(`passo-${this.getAttribute('data-proximo')}`);
+        proximoPasso.classList.add('ativo');
+    });
+});
