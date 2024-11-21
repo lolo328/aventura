@@ -1,13 +1,14 @@
-// Função para controlar os passos da aventura
-const botoes = document.querySelectorAll('.btn-proximo');
-botoes.forEach((botao) => {
-    botao.addEventListener('click', function () {
-        // Esconde o passo atual
-        const passoAtual = document.querySelector('.passo.ativo');
-        passoAtual.classList.remove('ativo');
+// Script para alternar entre os passos
+document.querySelectorAll('.btn-proximo').forEach(button => {
+    button.addEventListener('click', () => {
+        const proximoPasso = button.getAttribute('data-proximo');
         
-        // Exibe o próximo passo
-        const proximoPasso = document.getElementById(`passo-${this.getAttribute('data-proximo')}`);
-        proximoPasso.classList.add('ativo');
+        // Ocultar todos os passos
+        document.querySelectorAll('.passo').forEach(passo => {
+            passo.classList.remove('ativo');
+        });
+
+        // Mostrar o próximo passo
+        document.getElementById(`passo-${proximoPasso}`).classList.add('ativo');
     });
 });
